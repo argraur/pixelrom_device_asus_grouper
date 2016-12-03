@@ -18,6 +18,18 @@ PRODUCT_COPY_FILES := \
     device/asus/grouper/fstab.grouper:root/fstab.grouper \
     device/asus/grouper/init.grouper.rc:root/init.grouper.rc
 
+# GApps stuff
+GAPPS_VARIANT := stock
+GAPPS_FORCE_PACKAGE_OVERRIDES := true
+# Exclude Editors packages due to big size!
+GAPPS_EXCLUDED_PACKAGES := EditorsDocs
+GAPPS_EXCLUDED_PACKAGES := EditorsSlides
+GAPPS_EXCLUDED_PACKAGES := EditorsSheets
+# Nexus 7 IS Wi-Fi only. Goodbye Google Dialer!
+GAPPS_EXCLUDED_PACKAGES := GoogleDialer
+# Use Pixel Prebuilt wallpapers instead!
+GAPPS_EXCLUDED_PACKAGES := Wallpapers
+
 # the actual meat of the device-specific product definition
 $(call inherit-product, device/asus/grouper/device-common.mk)
 
@@ -26,3 +38,4 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 DEVICE_PACKAGE_OVERLAYS := \
     device/asus/grouper/overlay
+$(call inherit-product, vendor/google/build/opengapps-packages.mk)

@@ -18,9 +18,11 @@
 $(call inherit-product, device/asus/grouper/device.mk)
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+# Inherit PixelROM stuff
+$(call inherit-product-if-exists, vendor/pixelrom/pixelrom.mk)
 
 PRODUCT_NAME   := aosp_grouper
 PRODUCT_DEVICE := grouper
 PRODUCT_BRAND  := Google
-PRODUCT_MODEL  := Nexus 7
+PRODUCT_MODEL  := Pixel XL
 PRODUCT_MANUFACTURER := Asus
